@@ -28,6 +28,7 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
         set -e +x
         cf login -a api.cf.nonprod-mpn.ro11.allstate.com -u ${CF_USERNAME} -p ${CF_PASSWORD} --skip-ssl-validation; cf target -o IS-COMPOZED-ACCELERATOR -s DEV
         cf push -p build/libs/sunshine-forge-0.0.1-SNAPSHOT.jar
+        ./gradlew publish
         '''
         }
     }
