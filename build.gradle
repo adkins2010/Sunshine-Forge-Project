@@ -34,7 +34,8 @@ jar {
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    //mavenCentral()
+    maven { url "https://artifactory.allstate.com/artifactory/libs-release" } //Configure gradle to use Artifactory to resolve Maven dependencies
 }
 
 // https://github.com/srs/gradle-node-plugin gives us npm_run_build, then we copy the webpack bundle /src/main/resources/static (spring serves files automatically from there)
