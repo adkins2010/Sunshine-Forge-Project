@@ -21,3 +21,4 @@ src/main/resources/static
 *.iws
 *.iml
 *.ipr
+.gradle/

@@ -1,6 +1,6 @@
 applications:
 - name: sunshine-forge
 memory: 512M
-host: sunshine-forge-client
+host: sunshine-forge-mike
 domains:
 - apps.nonprod-mpn.ro11.allstate.com
