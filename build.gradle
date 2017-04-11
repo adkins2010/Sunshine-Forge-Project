@@ -30,6 +30,36 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'project-report'
 apply plugin: "com.moowork.node"
 apply plugin: "org.flywaydb.flyway"
+apply plugin: 'maven-publish'
+
+group "com.allstate.platform.eng"
+archivesBaseName = "sunshine-forge"
+
+if (System.env.BUILD_NUMBER) {
+    version = "${version}.${System.env.BUILD_NUMBER}"
+} else {
+    version="1.0"
+}
+
+publishing {
+    publications {
+        demo(MavenPublication) {
+            artifactId archivesBaseName
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            name 'artifactory'
+            url "https://artifactory.allstate.com/artifactory/libs-release-local"
+            credentials {
+                username = System.env.ARTIFACTORY_USERNAME
+                password = System.env.ARTIFACTORY_PASSWORD
+            }
+        }
+    }
+}
 
 jar {
     baseName = 'sunshine-forge'
