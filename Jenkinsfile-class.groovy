@@ -10,7 +10,7 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
     env.GRADLE_USER_HOME = "."
     stage("Build") {
         sh '''
-      ./gradlew clean build
+      ./gradlew clean build -S
       '''
     }
 
