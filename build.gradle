@@ -3,28 +3,33 @@ buildscript {
         springBootVersion = '1.4.4.RELEASE'
     }
     repositories {
-        mavenCentral()
+        //mavenCentral()
+        maven { url "https://artifactory.allstate.com/artifactory/libs-release" } //Configure gradle to use Artifactory to resolve Maven dependencies
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'com.h2database:h2:1.4.191'
+        classpath "gradle.plugin.com.boxfuse.client:flyway-release:4.1.2"
+        classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
     }
 }
 
-plugins {
-    id "org.flywaydb.flyway" version "4.0.3"
-    id "com.moowork.node" version "1.1.1"
-}
+//plugins {
+//    id "org.flywaydb.flyway" version "4.0.3"
+//    id "com.moowork.node" version "1.1.1"
+//}
 
-flyway {
-    url = 'jdbc:mysql://localhost/sunshinetest?serverTimezone=UTC'
-    user = 'root'
-}
+//flyway {
+//    url = 'jdbc:mysql://localhost/sunshinetest?serverTimezone=UTC'
+//    user = 'root'
+//}
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'project-report'
+apply plugin: "com.moowork.node"
+apply plugin: "org.flywaydb.flyway"
 
 jar {
     baseName = 'sunshine-forge'
@@ -34,7 +39,7 @@ jar {
 sourceCompatibility = 1.8
 
 repositories {
-    //mavenCentral()
+   // mavenCentral()
     maven { url "https://artifactory.allstate.com/artifactory/libs-release" } //Configure gradle to use Artifactory to resolve Maven dependencies
 }
 
@@ -53,6 +58,10 @@ node {
     npmWorkDir = file("${project.buildDir}/npm")
     nodeModulesDir = file("${project.projectDir}/sunshine-forge-client")
     npmWorkDir = file("${project.projectDir}/sunshine-forge-client")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
 }
 
 dependencies {

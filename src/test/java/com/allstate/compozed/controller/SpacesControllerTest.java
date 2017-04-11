@@ -37,14 +37,14 @@
 //
 //    Spaces spaces ;
 //
-//    @Before
+////    @Before
 //    public void setup (){
 //        spaces = new Spaces();
 //        spaces.setDisk_quotamb(120);
 //        spaces.setMemory_quotamb(120);
 //        spaces.setName("Larry");
 //    }
-//    @Test
+////    @Test
 //    public void testCreateSpace() throws Exception
 //    {
 //        spaces.setName("Larry's Space");
@@ -63,7 +63,7 @@
 //
 //    }
 //
-//    @Test
+////    @Test
 //    public void testFindAllSpaces() throws Exception
 //    {
 //
@@ -82,7 +82,7 @@
 //
 //    }
 //
-//    @Test
+////    @Test
 //    public void testFindOneSpace() throws Exception {
 //
 //        when(this.spacesRepository.findOne(7l)).thenReturn(spaces);
@@ -101,7 +101,7 @@
 //    //as integration tests since we need to reach out to the database to verify anything
 //    //actually happens
 //
-//    @Test
+////    @Test
 //    public void testPutSpace() throws Exception
 //    {
 //        spaces =spacesRepository.save(spaces);
@@ -117,7 +117,7 @@
 //        verify(this.spacesRepository).save(any(Spaces.class));
 //    }
 //
-//    @Test
+////    @Test
 //    public void testDeleteSpace() throws Exception {
 //
 //        MockHttpServletRequestBuilder request = delete("/spaces/7");
