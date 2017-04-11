@@ -5,4 +5,4 @@ host: Sunshine-Forge
 domains:
 - apps.nonprod-mpn.ro11.allstate.com
 services:
-  - sunshine-forge-mike-services
+  - sunshine-forge-mike-mysql
