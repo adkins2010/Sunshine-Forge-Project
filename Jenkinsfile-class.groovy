@@ -52,14 +52,14 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
             [
                     $class          : 'UsernamePasswordMultiBinding',
                     credentialsId   : 'c47a385f-6585-40c5-85ba-3cf2580e2776',
-                    passwordVariable: 'ARTIFACTORY_PASSWORD',
-                    usernameVariable: 'ARTIFACTORY_USERNAME'
+                    passwordVariable: 'CF_PASSWORD',
+                    usernameVariable: 'CF_USERNAME'
             ]]) {
         stage("Deploy-UAT") {
             step([
                     $class: 'ConveyorJenkinsPlugin',
                     applicationName: 'sunshine-forge',
-                    artifactURL: "https://artifactory.allstate.com/artifactory/libs-release-local/com/allstate/platform/eng/spring-music/1.0.${env.BUILD_NUMBER}/spring-music-1.0.${env.BUILD_NUMBER}.jar",
+                    artifactURL: "https://artifactory.allstate.com/artifactory/libs-release-local/com/allstate/platform/eng/sunshine-forge-mike-mysql/1.0.${env.BUILD_NUMBER}/sunshine-forge-mike-mysql-1.0.${env.BUILD_NUMBER}.jar",
                     environment: 'non-prod',
                     manifest: """
                   applications:
