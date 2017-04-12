@@ -59,7 +59,7 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
             step([
                     $class: 'ConveyorJenkinsPlugin',
                     applicationName: 'sunshine-forge',
-                    artifactURL: "https://artifactory.allstate.com/artifactory/libs-release-local/com/allstate/platform/eng/sunshine-forge-mike-mysql/1.0.${env.BUILD_NUMBER}/sunshine-forge-mike-mysql-1.0.${env.BUILD_NUMBER}.jar",
+                    artifactURL: "https://artifactory.allstate.com/artifactory/libs-release-local/com/allstate/platform/eng/sunshine-forge/1.0.${env.BUILD_NUMBER}/sunshine-forge-1.0.${env.BUILD_NUMBER}.jar",
                     environment: 'non-prod',
                     manifest: """
                   applications:
