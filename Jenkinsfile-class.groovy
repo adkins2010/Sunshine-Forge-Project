@@ -64,6 +64,7 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
                     manifest: """
                   applications:
                   - name: 'sunshine-forge-uat'
+                    host: 'sunchine-forge-mike'
                     instances: 1
                     memory: 512M
                     buildpack: 'java_buildpack_offline'
