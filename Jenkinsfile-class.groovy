@@ -23,7 +23,7 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
                     usernameVariable: 'CF_USERNAME'
             ]]) {
 
-        stage("Deploy") {
+        stage("Deploy-UAT") {
             sh '''
         set -e +x
         cf login -a api.cf.nonprod-mpn.ro11.allstate.com -u ${CF_USERNAME} -p ${CF_PASSWORD} --skip-ssl-validation; cf target -o IS-COMPOZED-ACCELERATOR -s DEV
