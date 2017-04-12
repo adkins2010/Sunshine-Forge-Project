@@ -63,14 +63,14 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
                     environment: 'non-prod',
                     manifest: """
                   applications:
-                  - name: 'spring-music-demo-uat'
+                  - name: 'sunshine-forge-uat'
                     instances: 1
                     memory: 512M
                     buildpack: 'java_buildpack_offline'
                     env:
                       MY_ENV_VARIABLE: "Dummy"
                       """,
-                    organization: 'IS-COMPOZED',
+                    organization: 'IS-COMPOZED-ACCELERATOR',
                     space: 'UAT',
                     serviceNowGroup: 'XP_IS_CHG',
                     serviceNowUserID: env.CF_USERNAME,
