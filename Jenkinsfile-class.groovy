@@ -47,4 +47,36 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
             '''
         }
     }
+
+    withCredentials([
+            [
+                    $class          : 'UsernamePasswordMultiBinding',
+                    credentialsId   : 'c47a385f-6585-40c5-85ba-3cf2580e2776',
+                    passwordVariable: 'ARTIFACTORY_PASSWORD',
+                    usernameVariable: 'ARTIFACTORY_USERNAME'
+            ]]) {
+        stage("Deploy-UAT") {
+            step([
+                    $class: 'ConveyorJenkinsPlugin',
+                    applicationName: 'sunshine-forge',
+                    artifactURL: "https://artifactory.allstate.com/artifactory/libs-release-local/com/allstate/platform/eng/spring-music/1.0.${env.BUILD_NUMBER}/spring-music-1.0.${env.BUILD_NUMBER}.jar",
+                    environment: 'non-prod',
+                    manifest: """
+                  applications:
+                  - name: 'spring-music-demo-uat'
+                    instances: 1
+                    memory: 512M
+                    buildpack: 'java_buildpack_offline'
+                    env:
+                      MY_ENV_VARIABLE: "Dummy"
+                      """,
+                    organization: 'IS-COMPOZED',
+                    space: 'UAT',
+                    serviceNowGroup: 'XP_IS_CHG',
+                    serviceNowUserID: env.CF_USERNAME,
+                    username: env.CF_USERNAME,
+                    password: env.CF_PASSWORD
+            ])
+        }
+    }
 }
