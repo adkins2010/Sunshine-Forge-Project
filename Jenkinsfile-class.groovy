@@ -26,8 +26,7 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
         stage("Deploy") {
             sh '''
         set -e +x
-
-        cf login -a api.cf.nonprod-mpn.ro10.allstate.com -u ${CF_USERNAME} -p ${CF_PASSWORD} --skip-ssl-validation; cf target -o IS-COMPOZED-ACCELERATOR -s DEV
+        cf login -a api.cf.nonprod-mpn.ro11.allstate.com -u ${CF_USERNAME} -p ${CF_PASSWORD} --skip-ssl-validation; cf target -o IS-COMPOZED-ACCELERATOR -s DEV
         cf push -p build/libs/sunshine-forge-1.0.${BUILD_NUMBER}.jar
         '''
         }
