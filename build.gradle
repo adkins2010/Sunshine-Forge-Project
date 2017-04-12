@@ -63,7 +63,7 @@ publishing {
 
 jar {
     baseName = 'sunshine-forge'
-    version version
+    version = version
 }
 
 sourceCompatibility = 1.8
