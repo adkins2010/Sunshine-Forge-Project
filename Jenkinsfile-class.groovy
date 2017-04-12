@@ -28,6 +28,8 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
         set -e +x
         cf login -a api.cf.nonprod-mpn.ro11.allstate.com -u ${CF_USERNAME} -p ${CF_PASSWORD} --skip-ssl-validation; cf target -o IS-COMPOZED-ACCELERATOR -s DEV
         cf push -p build/libs/sunshine-forge-1.0.${BUILD_NUMBER}.jar
+        cf login -a api.cf.nonprod-mpn.ro10.allstate.com -u ${CF_USERNAME} -p ${CF_PASSWORD} --skip-ssl-validation; cf target -o IS-COMPOZED-ACCELERATOR -s DEV
+        cf push -p build/libs/sunshine-forge-1.0.${BUILD_NUMBER}.jar
         '''
         }
     }
@@ -59,7 +61,7 @@ docker.image(docker_registry + "/compozed/ci-base:0.8").inside() {
             step([
                     $class: 'ConveyorJenkinsPlugin',
                     applicationName: 'sunshine-forge',
-                    artifactURL: "https://artifactory.allstate.com/artifactory/libs-release-local/com/allstate/platform/eng/sunshine-forge/1.0.${env.BUILD_NUMBER}/sunshine-forge-1.0.${env.BUILD_NUMBER}.jar",
+                    artifactURL: "https://artifactory.allstate.com/artifactory/libs-release-local/com/allstate/platform/eng/sunshine-forge-mike/1.0.${env.BUILD_NUMBER}/sunshine-forge-1.0.${env.BUILD_NUMBER}.jar",
                     environment: 'non-prod',
                     manifest: """
                   applications:
