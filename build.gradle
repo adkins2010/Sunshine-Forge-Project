@@ -32,7 +32,8 @@ apply plugin: "com.moowork.node"
 apply plugin: "org.flywaydb.flyway"
 apply plugin: 'maven-publish'
 
-
+group "com.allstate.platform.eng"
+archivesBaseName = "sunshine-forge"
 
 if (System.env.BUILD_NUMBER) {
     version = "1.0.${System.env.BUILD_NUMBER}"
@@ -64,8 +65,9 @@ publishing {
 }
 publish.dependsOn build
 
+
 jar {
-    baseName = 'sunshine-forge'
+    baseName = 'sunshine-forge-mike'
     version = version
 }
 
