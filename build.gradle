@@ -33,7 +33,7 @@ apply plugin: "org.flywaydb.flyway"
 apply plugin: 'maven-publish'
 
 group "com.allstate.platform.eng"
-archivesBaseName = "sunshine-forge"
+archivesBaseName = "sunshine-forge-mike"
 
 if (System.env.BUILD_NUMBER) {
     version = "1.0.${System.env.BUILD_NUMBER}"
