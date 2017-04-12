@@ -63,13 +63,13 @@ publishing {
 
 jar {
     baseName = 'sunshine-forge'
-    version = '0.0.1-${version}'
+    version = '0.0.1-SNAPSHOT'
 }
 
 sourceCompatibility = 1.8
 
 repositories {
-   // mavenCentral()
+    // mavenCentral()
     maven { url "https://artifactory.allstate.com/artifactory/libs-release" } //Configure gradle to use Artifactory to resolve Maven dependencies
 }
 
@@ -131,19 +131,3 @@ test {
     //systemProperty 'webdriver.chrome.driver', '/Users/brent.gardner/Downloads/chromedriver'
 }
 
-//task writeNewPom {
-//    doLast {
-//        pom {
-//            project {
-//                inceptionYear '2008'
-//                licenses {
-//                    license {
-//                        name 'The Apache Software License, Version 2.0'
-//                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//                        distribution 'repo'
-//                    }
-//                }
-//            }
-//        }.writeTo("$buildDir/com/allstate/platform/eng/sunshine-forge/1.0/sunshine-forge-1.0.pom")
-//    }
-//}
