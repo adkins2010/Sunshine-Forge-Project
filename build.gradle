@@ -44,10 +44,7 @@ if (System.env.BUILD_NUMBER) {
 publishing {
     publications {
         demo(MavenPublication) {
-            groupId 'com.allstate.platform.eng'
-            artifactId 'sunshine-forge-mike'
-            version version
-
+            artifactId archivesBaseName
             from components.java
         }
     }
@@ -63,11 +60,9 @@ publishing {
         }
     }
 }
-publish.dependsOn build
-
 
 jar {
-    baseName = 'sunshine-forge-mike'
+    baseName = 'sunshine-forge'
     version = version
 }
 
